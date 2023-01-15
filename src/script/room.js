@@ -1,5 +1,6 @@
 const newUserList = document.getElementsByClassName("list_btm");
 const participantsList = document.getElementsByClassName("list_mid");
+const chatList = document.getElementsByClassName("chat");
 
 document.addEventListener("DOMContentLoaded", () => {
   onloadData();
@@ -17,8 +18,43 @@ const onloadData = () => {
   //   참여자 목록 생성
   for (let user of userList) {
     const userName = document.createElement("div");
-    userName.innerHTML = user;
+    userName.innerText = user;
     participantsList[0].appendChild(userName);
   }
-  // 기존 채팅목록 확인
+  let previousChatList = JSON.parse(localStorage.getItem("chats"));
+  for (let chat of previousChatList) {
+    checkChatList(chat);
+  }
+};
+
+const checkChatList = (chat) => {
+  const chatItem = document.createElement("div");
+  chatItem.className = "chat_item";
+  const chatAuthor = document.createElement("div");
+  chatAuthor.className = "chat_author";
+  const chatText = document.createElement("div");
+  chatText.className = "chat_text";
+  chatAuthor.innerText = chat.author;
+  chatText.innerText = chat.chat;
+  chatItem.appendChild(chatAuthor);
+  chatItem.appendChild(chatText);
+  chatList[0].appendChild(chatItem);
+};
+
+const onMakeNewChat = () => {
+  // 새로운 채팅을 로컬스토리지에 저장하는것
+  let newChat = document.getElementById("chat_input").value;
+
+  let addChat = JSON.parse(localStorage.getItem("chats"));
+
+  let chatAuthor = localStorage.getItem("myName");
+  if (!addChat) {
+    addChat = [{ chat: newChat, author: chatAuthor }];
+  } else {
+    addChat.push({ chat: newChat, author: chatAuthor });
+  }
+  localStorage.setItem("chats", JSON.stringify(addChat));
+
+  //새로운 채팅만채팅화면에 보여주기
+  checkChatList({ chat: newChat, author: chatAuthor });
 };

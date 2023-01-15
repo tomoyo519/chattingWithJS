@@ -6,7 +6,7 @@ const setName = () => {
   let props = document.getElementById("name").value;
   let addedNewUser = JSON.parse(localStorage.getItem("userList"));
   console.log("thisisaddedNewUser", addedNewUser);
-  if (addedNewUser === []) {
+  if (!addedNewUser) {
     addedNewUser = [props];
   } else {
     console.log("thisisaddedNewUser", addedNewUser);

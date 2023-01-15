@@ -12,6 +12,27 @@
   flex-direction: row;
 }
 
+.chat {
+  width: 100%;
+  overflow-y: scroll;
+  height: 723.875px;
+}
+
+.chat_author {
+  background-color: thistle;
+  text-align: center;
+  width: 20%;
+  border-radius: 50px;
+}
+
+.chat_item {
+  display: flex;
+  align-items: baseline;
+  width: 100%;
+  justify-content: baseline;
+  padding: 10px;
+}
+
 .chat_wrapper {
   width: 80%;
   height: 100%;
@@ -30,7 +51,8 @@
   justify-content: center;
   /* padding: 5px; */
 }
-.chat_input {
+
+#chat_input {
   width: 80%;
   height: 100%;
 }
