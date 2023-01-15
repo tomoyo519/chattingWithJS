@@ -1,9 +1,14 @@
 const newUserList = document.getElementsByClassName("list_btm");
 const participantsList = document.getElementsByClassName("list_mid");
 const chatList = document.getElementsByClassName("chat");
+const wrapperList = document.getElementsByClassName("wrapper");
 
 document.addEventListener("DOMContentLoaded", () => {
   onloadData();
+});
+
+document.addEventListener("mouseover", (e) => {
+  onMakeCursor(e);
 });
 
 const onloadData = () => {
@@ -64,3 +69,56 @@ const onHandleEnter = () => {
     onMakeNewChat();
   }
 };
+
+const onMakeCursor = (event) => {
+  const userName = localStorage.getItem("myName");
+  const userCursorList = JSON.parse(localStorage.getItem("userCursor"));
+  const cursorInfo = [
+    {
+      userName: userName,
+      cursorX: event.pageX,
+      cursorY: event.pageY,
+    },
+  ];
+  if (!userCursorList) {
+    localStorage.setItem("cursorInfo", JSON.stringify(cursorInfo));
+  } else {
+    console.log("thisisuserName", userName);
+    userCursorList.push(cursorInfo);
+  }
+};
+
+// const checkUserCursor = () => {
+setInterval(() => {
+  const previousCursor = document.getElementById("userCursor");
+  if (!previousCursor) {
+    console.log("thisispreviousCUrsor", previousCursor);
+    let usersCursorInfo = JSON.parse(localStorage.getItem("cursorInfo"));
+    for (let info of usersCursorInfo) {
+      console.log("thisisinfo", info);
+      const cursor = document.createElement("div");
+      cursor.contentEditable = true;
+      cursor.id = "userCursor";
+      cursor.style.position = "absolute";
+      cursor.style.left = info.cursorX + "px";
+      cursor.style.top = info.cursorY + "px";
+      cursor.innerText = info.userName;
+      wrapperList[0].appendChild(cursor);
+    }
+  } else {
+    const previousCursor = document.getElementById("userCursor").remove();
+    let usersCursorInfo = JSON.parse(localStorage.getItem("cursorInfo"));
+    for (let info of usersCursorInfo) {
+      console.log("thisisinfo", info);
+      const cursor = document.createElement("div");
+      cursor.contentEditable = true;
+      cursor.id = "userCursor";
+      cursor.style.position = "absolute";
+      cursor.style.left = info.cursorX + "px";
+      cursor.style.top = info.cursorY + "px";
+      cursor.innerText = info.userName;
+      wrapperList[0].appendChild(cursor);
+    }
+  }
+}, 3000);
+// };

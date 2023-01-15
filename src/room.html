@@ -11,12 +11,8 @@
         <!-- 여기에 채팅 구현-->
         <div class="chat"></div>
         <div class="chat_container">
-          <input id="chat_input" />
-          <button
-            class="chat_button"
-            onClick="onMakeNewChat()"
-            onkeyup="onHandleEnter()"
-          >
+          <input id="chat_input" onkeyup="onHandleEnter()" />
+          <button class="chat_button" onClick="onMakeNewChat()">
             입력하기
           </button>
         </div>
