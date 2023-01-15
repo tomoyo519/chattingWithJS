@@ -12,14 +12,36 @@
   flex-direction: row;
 }
 
-.chat {
+.chat_wrapper {
   width: 80%;
   height: 100%;
   border: 1px solid #e8e8e8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chat_container {
+  width: 100%;
+  height: 34.86px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding: 5px; */
+}
+.chat_input {
+  width: 80%;
+  height: 100%;
+}
+
+.chat_button {
+  width: calc(20%);
+  height: 100%;
 }
 
 .list {
-  width: 20%;
+  width: 30%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -30,6 +52,7 @@
   width: 100%;
   height: 30px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid #e8e8e8;
@@ -45,8 +68,9 @@
 
 .list_btm {
   width: 100%;
-  height: 30px;
+  height: 40px;
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   padding: 5px;
