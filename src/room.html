@@ -12,7 +12,11 @@
         <div class="chat"></div>
         <div class="chat_container">
           <input id="chat_input" />
-          <button class="chat_button" onClick="onMakeNewChat()">
+          <button
+            class="chat_button"
+            onClick="onMakeNewChat()"
+            onkeyup="onHandleEnter()"
+          >
             입력하기
           </button>
         </div>

@@ -58,3 +58,9 @@ const onMakeNewChat = () => {
   //새로운 채팅만채팅화면에 보여주기
   checkChatList({ chat: newChat, author: chatAuthor });
 };
+
+const onHandleEnter = () => {
+  if (window.event.keyCode === 13) {
+    onMakeNewChat();
+  }
+};
